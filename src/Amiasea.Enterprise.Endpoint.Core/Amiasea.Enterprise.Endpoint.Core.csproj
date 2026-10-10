@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Release'">
-    <PackageReference Include="Amiasea.Enterprise.Operation.Core" Version="1.0.0" />
+    <PackageReference Include="Amiasea.Enterprise.Operation.Core" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
