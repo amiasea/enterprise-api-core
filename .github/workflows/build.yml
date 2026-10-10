@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   build:
@@ -27,8 +28,24 @@ jobs:
           dotnet-version: 11.0.x
           dotnet-quality: preview
 
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v6.3.0
+        with:
+          role-to-assume: arn:aws:iam::548890973033:role/amiasea-enterprise-restore
+          aws-region: us-east-1
+          allowed-account-ids: "548890973033"
+
+      - name: Configure CodeArtifact NuGet source
+        run: |
+          aws codeartifact login \
+            --tool dotnet \
+            --domain amiasea \
+            --domain-owner 548890973033 \
+            --repository nuget-enterprise \
+            --region us-east-1
+
       - name: Restore
-        run: dotnet restore endpoint-core.slnx
+        run: dotnet restore endpoint-core.slnx --configuration Release
 
       - name: Test
         run: dotnet test endpoint-core.slnx --configuration Release --no-restore

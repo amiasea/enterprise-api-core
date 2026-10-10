@@ -6,8 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
     <ProjectReference Include="..\..\..\..\operation\core\src\Amiasea.Enterprise.Operation.Core\Amiasea.Enterprise.Operation.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <PackageReference Include="Amiasea.Enterprise.Operation.Core" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
