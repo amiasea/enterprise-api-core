@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/endpoint/">
+		<Project Path="src/Amiasea.Enterprise.Endpoint.Core/Amiasea.Enterprise.Endpoint.Core.csproj" />
+	</Folder>
+</Solution>
