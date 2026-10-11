@@ -13,7 +13,7 @@ public static class CoreEndpointServiceCollectionExtensions
         services.AddCoreOperations(configuration);
 
         services
-            .AddGraphQLServer()
+            .AddGraphQLServer("Core")
             .AddCoreTypes();
 
         return services;
